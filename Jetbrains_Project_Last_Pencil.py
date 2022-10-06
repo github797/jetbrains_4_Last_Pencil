@@ -1,8 +1,10 @@
-# Players take turns taking X pencils until none of them remain.
-# Players (the bot and the user) can remove not more than 3 pencils at a time.
-# The player who takes the last pencil loses the game.
-# A bot follows a winning strategy.
-# If the bot's position isn't the winning one, it takes any number of pencils (1, 2, or 3) at random.
+"""
+Players take turns taking X pencils until none of them remain.
+Players (the bot Jack and the user John) can remove not more than 3 pencils at a time.
+The player who takes the last pencil loses the game.
+A bot follows a winning strategy.
+If the bot's position isn't the winning one, it takes any number of pencils (1, 2, or 3) at random.
+"""
 
 import random
 
@@ -32,7 +34,7 @@ def start_player():
     return turn
 
 
-def bot(pencils, turn):  # Jack is the bot
+def bot(pencils, turn):
     print(f"{turn}'s turn:")
     if pencils % 4 == 0:
         pencils_taken = 3
@@ -47,7 +49,7 @@ def bot(pencils, turn):  # Jack is the bot
     return pencils
 
 
-def user(pencils, turn):  # John is the user
+def user(pencils, turn):
     print(f"{turn}'s turn!")
     while True:
         pencils_taken = input()
@@ -66,7 +68,7 @@ def user(pencils, turn):  # John is the user
 def game(pencils, turn):
     while pencils > 0:
         print('|' * pencils)
-        if turn == players[1]:  # Jack is the bot
+        if turn == players[1]:
             pencils = bot(pencils, turn)
         else:
             pencils = user(pencils, turn)
